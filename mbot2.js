@@ -14,7 +14,7 @@ let sessionCfg;
 if (fs.existsSync(SESSION_FILE_PATH)) {
 	sessionCfg = require(SESSION_FILE_PATH);
 }
-client = new Client({ puppeteer: { headless: true }, session: sessionCfg });
+client = new Client({ puppeteer: { headless: false }, session: sessionCfg });
 
 client.initialize();
 
@@ -24,7 +24,7 @@ client.on('qr', (qr) => {
 });
 
 // generate session chromium
-/*client.on('authenticated', (session) => {
+client.on('authenticated', (session) => {
 	console.log('[:] TERSAMBUNG : ', session['WABrowserId']);
 	sessionCfg=session;
 	fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), function (err) {
@@ -32,7 +32,7 @@ client.on('qr', (qr) => {
 			console.error(err);
 		}
 	});
-});*/
+});
 
 // bila koneksi gagal
 client.on('auth_failure', msg => {
@@ -54,7 +54,7 @@ client.on('message', async msg => {
 		return
 	}
 	console.log('[:] PESAN DITERIMA ', msg);
-	//if (chat.isGroup) {
+	if (chat.isGroup) {
 		//client.on('groupchat', async gc => {
 			//if (dari == chat.owner.user) {82338074547
 				if (msg.body.startsWith('!setName ')) {
@@ -131,15 +131,15 @@ client.on('message', async msg => {
 				} else if (msg.body == '!owner') {
 					msg.reply(JSON.stringify({owner: chat.owner.user}))
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 				} else if (msg.body.startsWith('!quotes add ')) {
 					let quotes = msg.body.slice(12).toString()
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 					_.addQuotes(quotes, dari, (error, {data} = {} ) => {
 						if (data == 200) {
 							msg.reply(`👋 Quotes berhasil ditambahkan \n\n *" ${quotes} "* `)
@@ -151,9 +151,9 @@ client.on('message', async msg => {
 
 				} else if (msg.body.startsWith('!film ')) {
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 					let judul = msg.body.slice(6)
 					_.cariMovie(judul, (error, {data, code} = {} ) => {
 						if (code == 200){
@@ -164,9 +164,9 @@ client.on('message', async msg => {
 					})
 				} else if (msg.body.startsWith('!bot request ')) {
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 					let permintaan = msg.body.slice(13).toString()
 					_.addRequest(permintaan, dari, (error, {data, permintaan, id} = {} ) => {
 						if (data == 200) {
@@ -177,9 +177,9 @@ client.on('message', async msg => {
 					})
 				} else if (msg.body == '!quotes') {
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 					_.quotesView((error, {data} = {} ) => {
 						chat.sendMessage(`Quotes request by @${users.number},\n\nQuotes :\n\n " *${data}* " `, {
 							mentions: [users]
@@ -187,25 +187,25 @@ client.on('message', async msg => {
 					})
 				} else if (msg.body == '!toxic') {
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 					_.toxicView((error, {data} = {} ) => {
 						client.sendMessage(msg.from, data);
 					})
-				} else if (msg.body == '!bot hit') {
+				} /*else if (msg.body == '!bot hit') {
 					// record hit
 					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+							console.log('[:] user record ..')
+						})
 					_.countHit((error, {data} = {} ) => {
 						msg.reply('⏱ Total Hit : '+data)
 					})
-				} else if (msg.body.startsWith('!coronaInfo ')) {
+				}*/ else if (msg.body.startsWith('!coronaInfo ')) {
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 					_.coronaBot(msg.body.slice(12), (error, {data, negara, meninggal, positif, sembuh} = {} ) => {
 						if (!error) {
 							msg.reply(`📢 COVID19 CHECK INFO 📢 \n\n🌡 Negara : ${negara}\n🌡 Positif  : ${positif}\n🌡 Sembuh : ${sembuh}\n🌡 Meninggal : ${meninggal}\n\n💌 *SELALU JAGA KESEHATAN DAN BERPOLA HIDUP SEHAT YAH* 😇`)
@@ -217,17 +217,17 @@ client.on('message', async msg => {
 					})
 				} else if (msg.body == '!menu' || msg.body == '!help') {
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 					_.menuBot_((error, {data} = {} ) => {
 						client.sendMessage(msg.from, data)
 					})
 				} else if (msg.body == '!info') {
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 					_.infoBot_((error, {data} = {} ) => {
 						client.sendMessage(msg.from, data)
 					})
@@ -287,15 +287,15 @@ client.on('message', async msg => {
 					//}
 				} else if (msg.body.startsWith('!qr ')) {
 					// record hit
-					_.hitUser(dari, (error, {data} = {} ) => {
-						console.log('[:] user record ..')
-					})
+					/*_.hitUser(dari, (error, {data} = {} ) => {
+							console.log('[:] user record ..')
+						})*/
 					run().catch(error => console.error(error.stack));
 					async function run() {
 
 						const str_ = msg.body.slice(4)
-						const res = await qrcode.toDataURL(`${str_}`);
-						msg.reply(new MessageMedia('image/png', res.replace('data:image/png;base64,', ''), 'random'))
+						const res = await qrcode.toDataURL(`${str_}`,  { errorCorrectionLevel: 'H' });
+						msg.reply(new MessageMedia('image/jpeg', res.replace('data:image/png;base64,', ''), 'random'))
 						console.log(res.replace('data:image/png;base64,', ''))
 					}
 				} else if (msg.body == '!read qr' && msg.hasMedia) {
@@ -304,34 +304,81 @@ client.on('message', async msg => {
 					fs.writeFile("out.jpeg", attachmentData.data, 'base64', (err) => {
 						if (err) throw err;
 						_.readQR('./out.jpeg', (error, {data} = {} ) => {
-							msg.reply(`👋 QR READER AEX BOT 👋 \n\n 🧷 Mime-Type: ${attachmentData.mimetype}\n ------------------------------\n 🧷 DATA RESULT: ${data}`)
+							const pesan = `👋 QR READER AEX BOT 👋 \n\n 🧷 Mime-Type: ${attachmentData.mimetype}\n ------------------------------\n 🧷 DATA RESULT: ${data}`
+							_.getBase64(`./out.png`, (error, {data} = {} ) => {
+								//msg.reply(new MessageMedia('image/jpeg', data, 'random'))
+								client.sendMessage(msg.from, new MessageMedia('image/jpeg', data, 'random'), { caption: pesan });
+							})
+							
 						})
 					});
+				} else if (msg.body == '!test' && msg.hasQuotedMsg) {
+					const quotedMsg = await msg.getQuotedMessage();
+					if (quotedMsg.hasMedia) {
+						const attachmentData = await quotedMsg.downloadMedia();
+						client.sendMessage(msg.from, attachmentData, { caption: '....' });
+					}
 				} else if (msg.body.startsWith('!spam ')) {
 					const nmr = msg.body.split(' ')[1]+'@c.us'
 					const psn = msg.body.split(' ')[2]+`\n\n ----------\n send by: ${msg.author.replace('@c.us', '')}`
 					const del = msg.body.split(' ')[3]
-					/*_.spamWaBot(msg.author, 'hai author', (error, {data} = {} ) => {
-						if (!error) {
-							client.sendMessage(msg.author, 'hai author')
-						}
-					})*/
-					for (i = 1; i <= del; i++) {
-						client.sendMessage(nmr.replace('0', '62'), psn+'\n\n by bot-aex - spam wa')
-					}
-					/*var i = 1
-					const main = (delay) => {
-						setTimeout(() => {
-							client.sendMessage(nmr.replace('0', '62'), psn+'\n\n by bot-aex - spam wa')
-							i++
-							if (i <= delay) {
-								main(delay)
+					client.sendMessage(msg.from, ' 🔐 Fitur sementara di non-aktifkan.')
+					/*if (del >= 20) {
+						client.sendMessage(msg.from, JSON.stringify({error: 'max 20 request'}))
+					} else {
+						if (nmr.indexOf('62') != 0) {
+							var i = 1
+							const main = (delay) => {
+								setTimeout(() => {
+									client.sendMessage(nmr.replace('0', '62'), psn+'\n\n by bot-aex - spam wa')
+									i++
+									if (i <= delay) {
+										main(delay)
+									}
+								}, delay)
 							}
-						}, delay)
+							client.sendMessage(msg.from, JSON.stringify({
+								success: `sukses mengirim ke ${nmr.replace('@c.us', '')}`,
+								count: `${del}x`,
+								delay: '5s(default'
+							}))
+							return main(5000)
+						} else {
+							client.sendMessage(msg.from, JSON.stringify({error: 'gunakan format 08xxx'}))
+						}
+					}*/
+				} else if (msg.body.startsWith('!bs64 ')) {
+					if (msg.body.split(' ')[1].match(/enc/g)) {
+						_.bs64enc(msg.body.slice(10), (error, {data} = {} ) => {
+							msg.reply(`-- bs64 Encode \n\n str: ${msg.body.slice(10)}\n res: ${data}`)
+						})
+					} else if (msg.body.split(' ')[1].match(/dec/g)) {
+						_.bs64dec(msg.body.slice(10), (error, {data} = {} ) => {
+							msg.reply(`-- bs64 Decode \n\n str: ${msg.body.slice(10)}\n res: ${data}`)
+						})
+					} else {
+						msg.reply("👋 Sepertinya error, ketik '!help' untuk melihat menu.")
 					}
-					return main(del)*/
+				} else if (msg.body.startsWith('!hash ')) {
+					if (msg.body.split(' ')[1].match(/sha1/g)) {
+						_.sha1hash(msg.body.slice(11), (error, {data} = {} ) => {
+							msg.reply(`-- sha1 Encrypt \n\n str : ${msg.body.slice(11)}\n res : ${data}`)
+						})
+					} else if (msg.body.split(' ')[1].match(/sha256/g)) {
+						_.sha256hash(msg.body.slice(13), (error, {data} = {} ) => {
+							msg.reply(`-- sha256 Encrypt \n\n str : ${msg.body.slice(13)}\n res : ${data}`)
+						})
+					} else if (msg.body.split(' ')[1].match(/sha512/g)) {
+						_.sha512hash(msg.body.slice(13), (error, {data} = {} ) => {
+							msg.reply(`-- sha512 Encrypt \n\n str : ${msg.body.slice(13)}\n res : ${data}`)
+						})
+					} else {
+						msg.reply("👋 Sepertinya error, ketik '!help' untuk melihat menu.")
+					}
 				}
 			//}
 		//}) 
-	//}
+	} else {
+		msg.reply(JSON.stringify({error: 400, message: 'BOT SEMENTRA HANYA UNTUK GROUP.'}))
+	}
 })
