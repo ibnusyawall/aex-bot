@@ -1,0 +1,32 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@pedroslopez/moduleraid": "^4.1.0",
+    "jsqr": "^1.2.0",
+    "puppeteer": "^2.1.1",
+    "check-disk-space": "^2.1.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "glob": "^7.1.6",
+    "gtts.js": "^1.0.1",
+    "hbs": "^4.1.0",
+    "http-errors": "~1.6.3",
+    "jimp": "^0.10.0",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "qrcode": "^1.4.4",
+    "qrcode-reader": "^1.0.4",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "jsdoc": "^3.6.3",
+    "jsdoc-baseline": "^0.1.5"
+  }
+}
