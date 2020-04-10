@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="container-fluid">
+        {{#if message}}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="material-icons">close</i>
+            </button>
+            <pre> {{message}} </pre>
+        </div>
+        {{/if}}
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">DIRECT CHAT WHATSAPP</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/direct-chat" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <label class="bmd-label-floating">Nomor Penerima</label>
+                                    <input name="nomor" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <label class="bmd-label-floating">Isi Pesan</label>
+                                    <input name="pesan" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <button class="btn btn-primary btn-round">KIRIM</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

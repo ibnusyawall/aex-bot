@@ -1,23 +1,38 @@
 {
-  "name": "wabot2",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "web",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "@pedroslopez/moduleraid": "^4.1.0",
+    "body-parser": "^1.19.0",
+    "check-disk-space": "^2.1.0",
+    "cheerio": "^1.0.0-rc.3",
+    "cookie-parser": "~1.4.4",
+    "crypto-js": "^4.0.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
     "glob": "^7.1.6",
-    "jimp": "^0.9.6",
+    "gtts.js": "^1.0.1",
+    "hbs": "^4.1.0",
+    "http-errors": "~1.6.3",
+    "jimp": "^0.10.0",
+    "jsqr": "^1.2.0",
+    "morgan": "~1.9.1",
     "mysql": "^2.18.1",
+    "ngrok": "^3.2.7",
+    "puppeteer": "^2.1.1",
     "qrcode": "^1.4.4",
     "qrcode-reader": "^1.0.4",
-    "qrcode-terminal": "^0.12.0",
     "request": "^2.88.2",
-    "shelljs": "^0.8.3",
-    "whatsapp-web.js": "^1.2.5"
+    "request-promise": "^4.2.5",
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "jsdoc": "^3.6.3",
+    "jsdoc-baseline": "^0.1.5"
   }
 }

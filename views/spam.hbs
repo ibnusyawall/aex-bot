@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="container-fluid">
+        {{#if message}}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="material-icons">close</i>
+            </button>
+            <pre> {{message}} </pre>
+        </div>
+        {{/if}}
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">LIST VOUCHER CODE</h4>
+                    <p class="card-category"> Kode ini hanya digunakan sementara, selanjutnya akan diberlakukan biaya
+                        pembelian per voucher.</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        No
+                                    </th>
+                                    <th>
+                                        Code
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                  
+                                    <td>
+                                        {{code}}
+                                    </td>
+                                   
+                                    <td>
+                                        <p class="text-success">valid</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">SPAM CHAT WHATSAPP</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/spam-wa" method="POST">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group bmd-form-group">
+                                    <label class="bmd-label-floating">Kode Vocher</label>
+                                    <input name="code" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label class="bmd-label-floating">Nomor Target (08)</label>
+                                    <input name="nomor" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group bmd-form-group">
+                                    <label class="bmd-label-floating">Jumlah</label>
+                                    <input name="jumlah" type="number" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <button class="btn btn-primary btn-round">KIRIM</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
