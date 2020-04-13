@@ -10,7 +10,7 @@
 
 ### Usage
 <pre>
-After scan barcode whatsapp, you can stat message with following command : !help for showing menu/command
+After scan barcode whatsapp, you can start message with following command : !help for showing menu/command
 </pre>
 
 ### Menu
@@ -59,5 +59,5 @@ After scan barcode whatsapp, you can stat message with following command : !help
 
 ## Screenshots
 
-![AEX BOT WHATSAPP](screenshot/1.png)
+![AEX BOT WHATSAPP](screenshot/1.PNG)
 ![AEX BOT WHATSAPP](screenshot/2.jpg)
