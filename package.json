@@ -1,6 +1,6 @@
 {
-  "name": "web",
-  "version": "0.0.0",
+  "name": "aex-bot",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -9,7 +9,6 @@
     "@pedroslopez/moduleraid": "^4.1.0",
     "body-parser": "^1.19.0",
     "check-disk-space": "^2.1.0",
-    "cheerio": "^1.0.0-rc.3",
     "cookie-parser": "~1.4.4",
     "crypto-js": "^4.0.0",
     "debug": "~2.6.9",
@@ -21,14 +20,11 @@
     "jimp": "^0.10.0",
     "jsqr": "^1.2.0",
     "morgan": "~1.9.1",
-    "mysql": "^2.18.1",
-    "ngrok": "^3.2.7",
     "puppeteer": "^2.1.1",
     "qrcode": "^1.4.4",
     "qrcode-reader": "^1.0.4",
     "request": "^2.88.2",
-    "request-promise": "^4.2.5",
-    "shelljs": "^0.8.3"
+    "request-promise": "^4.2.5"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

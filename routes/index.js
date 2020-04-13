@@ -1,15 +1,10 @@
 const express = require('express');
 
-// use custom library
 const totalDisk = require('./../lib/diskUsed')
-//const mySqlDB = require('./../lib/db')
 const clWa = require('./../lib/clientWa')
 
 const cwa = new clWa()
-//const _db = new mySqlDB('conn')
 const disk = new totalDisk()
-
-// use custom library
 
 const router = express.Router();
 
@@ -19,7 +14,6 @@ router.get('/', function (req, res, next) {
     free,
     size
   } = {}) => {
-    //_db.totalhit((error, {data} = {} ) => {
     cwa.tuMessage((error, {
       uread,
       tread
@@ -28,12 +22,10 @@ router.get('/', function (req, res, next) {
         title: 'AEX BOT',
         free: free,
         size: size,
-        //hit: data,
         uread: uread,
         tread: tread
       });
     })
-    //})
   })
 });
 
