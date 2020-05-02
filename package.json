@@ -1,12 +1,11 @@
 {
   "name": "aex-bot",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@pedroslopez/moduleraid": "^4.1.0",
     "body-parser": "^1.19.0",
     "check-disk-space": "^2.1.0",
     "cookie-parser": "~1.4.4",
@@ -18,17 +17,14 @@
     "hbs": "^4.1.0",
     "http-errors": "~1.6.3",
     "jimp": "^0.10.0",
-    "jsqr": "^1.2.0",
     "morgan": "~1.9.1",
-    "puppeteer": "^2.1.1",
+    "node-gtts": "^2.0.2",
     "qrcode": "^1.4.4",
     "qrcode-reader": "^1.0.4",
     "request": "^2.88.2",
-    "request-promise": "^4.2.5"
+    "request-promise": "^4.2.5",
+    "unirest": "^0.6.0",
+    "whatsapp-web.js": "^1.5.1"
   },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "jsdoc": "^3.6.3",
-    "jsdoc-baseline": "^0.1.5"
-  }
+  "devDependencies": {}
 }

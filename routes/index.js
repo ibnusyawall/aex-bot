@@ -1,8 +1,12 @@
-const express = require('express');
+/**
+ * AEX BOT PROJECT
+ * Any question or problem ? Contact me!
+ * Change Log : send media has been fixed.
+**/
 
+const express = require('express');
 const totalDisk = require('./../lib/diskUsed')
 const clWa = require('./../lib/clientWa')
-
 const cwa = new clWa()
 const disk = new totalDisk()
 
@@ -98,4 +102,5 @@ router.post('/direct-chat', (req, res, next) => {
     })
   })
 })
+
 module.exports = router;
