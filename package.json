@@ -15,20 +15,21 @@
     "glob": "^7.1.6",
     "gtts.js": "^1.0.1",
     "hbs": "^4.1.0",
+    "html-to-json": "^0.6.0",
     "http-errors": "~1.6.3",
     "jimp": "^0.10.0",
     "morgan": "~1.9.1",
+    "nedb": "^1.8.0",
+    "needle": "^2.5.0",
     "node-gtts": "^2.0.2",
     "qrcode": "^1.4.4",
     "qrcode-reader": "^1.0.4",
     "qrcode-terminal": "^0.12.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
-    "unirest": "^0.6.0",
-    "html-to-json": "^0.6.0",
-    "needle": "^2.5.0",
     "superagent": "^5.2.2",
-    "whatsapp-web.js": "^1.7.0"
+    "unirest": "^0.6.0",
+    "whatsapp-web.js": "^1.8.0"
   },
   "devDependencies": {}
 }

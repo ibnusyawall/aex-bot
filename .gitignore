@@ -1,0 +1,14 @@
+# Logs
+logs
+
+# Dependency directories
+node_modules/
+
+# Lock files
+package-lock.json
+
+# Optional npm cache directories
+.npm
+
+# Session file
+session.json

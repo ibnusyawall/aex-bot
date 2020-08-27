@@ -1,63 +1,56 @@
 # aex-bot
 
-### Installation Steps
+<div align="center">
+  ## AEX BOT WhatsApp
+</div>
+### Install
 
-1. `$ cd aex-bot`
-1. `$ npm i`
-2. `$ npm start`
+```bash
+> git clone https://github.com/ibnusyawall/aex-bot.git
+> cd aex-bot
+> npm i
+> npm start
+```
 
 ``Note : runing at port 3000``
 
-### Usage
+####Usage
 <pre>
-After scan barcode whatsapp, you can start message with following command : !help for showing menu/command
+After scan barcode whatsapp, you can start message with following command : !menu for showing menu/command
 </pre>
 
-### Menu
+
+#### Changelog:
+> ☑️ Fixing Other BUG 
+>
+> ☑️ Add Quotes Maker with commmand `!quotesmaker <size> <colorFont> <quotes>`
+>
+> ☑️ Delete trash file 
+
+#### Menu
+
 <pre>
-🔐 -----  AEX BOT GROUP ----- 🔐
+    -- AEX BOT WHATSAPP
 
-🍻 -> Menu --| Admin (owner) |-- 🍻
+    Group Command:
 
-⚙  *'!setName <optional>'* Ubah Nama Group
-💡  *'!setDesc <optional>'* Ubah Deskripsi Group
-🤾🏻‍♀  *'!demote <@tagmember>'* DEMOTE
-🎖  *'!promote <@tagmember>'* PROMOTE 
-🤺  *'!kick <@tagmember>'* TENDANG
-💌  *'!add <number>'* UNDANG 
-🚀  *'!owner'* Melihat Siapa Owner Group 
+      !setName <optional> Ubah Nama Group
+      !setDesc <optional> Ubah Deskripsi Group
+      !demote <@tagmember> DEMOTE
+      !promote <@tagmember> PROMOTE
+      !kick <@tagmember> TENDANG
+      !add <number> UNDANG
+      !owner View is owner group
 
-🍻 -> Menu --| ETC |-- 🍻
+    Other Command:
 
-🧷  *'!quotes'* View Quotes
-🧷  *'!toxic'* View Toxic 
-🧷  *'!film <title>'* Cari Film
-🧷  *'!bot join <optional>'* Undang Bot Ke Group Kalian
-🧷  *'!qr <optional>'* QR Code Maker
-🧷  *'!read qr <media>'* QR Code Reader
-🗣  *'!tts <optional>'* Text To Speech
-
-🍻 -> Menu --| SPAM WHATSAPP |-- 🍻
-
-💌  *'!spam <nomor> <jumlah> <key>'* Spam WA by AEX-BOT
-💌  *'!spamKey'* KEY Spam WA by AEX-BOT
-
-🍻 -> Menu --| SPAM WHATSAPP |-- 🍻
-
-🍻 -> Menu --| base64 & etc |-- 🍻
-
-🧷  *'!bs64 enc <string>'* Encrypt String
-🧷  *'!bs64 dec <string>'* Encode String 
-🧷  *'!hash sha1 <string>'* SHA1 Encrypt
-🧷  *'!hash sha256 <string>'* SHA256 Encrypt
-🧷  *'!hash sha512 <string>'* SHA512 Encrypt
-
-🍻 -> Menu --| base64 & etc |-- 🍻
-
-🔐 -----  AEX BOT GROUP ----- 🔐
+      !quotes Auto Quotes
+      !quotesmaker <size> <colorFont> <quotes> Quotes Maker
+      !toxic Auto Toxic
+      !ytmp3 <link> Youtube MP3 Downloader
+      !qr <text> QR Code Maker
+      !tts [en/id] <text> Text To Speech
+      !botjoin <link group> Undang Bot Ke Group Kalian
 </pre>
 
-## Screenshots
-
-![AEX BOT WHATSAPP](screenshot/1.PNG)
-![AEX BOT WHATSAPP](screenshot/2.jpg)
+found bug? or other problem? Pliese submit issues!
