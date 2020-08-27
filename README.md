@@ -35,23 +35,23 @@ After scan barcode whatsapp, you can start message with following command : !men
 
     Group Command:
 
-      !setName <optional> Ubah Nama Group
-      !setDesc <optional> Ubah Deskripsi Group
+      !setName [optional] Ubah Nama Group
+      !setDesc [optional] Ubah Deskripsi Group
       !demote <@tagmember> DEMOTE
       !promote <@tagmember> PROMOTE
       !kick <@tagmember> TENDANG
-      !add <number> UNDANG
+      !add [number] UNDANG
       !owner View is owner group
 
     Other Command:
 
       !quotes Auto Quotes
-      !quotesmaker <size> <colorFont> <quotes> Quotes Maker
+      !quotesmaker [size] [colorFont] [quotes] Quotes Maker
       !toxic Auto Toxic
-      !ytmp3 <link> Youtube MP3 Downloader
-      !qr <text> QR Code Maker
-      !tts [en/id] <text> Text To Speech
-      !botjoin <link group> Undang Bot Ke Group Kalian
+      !ytmp3 [link] Youtube MP3 Downloader
+      !qr [text] QR Code Maker
+      !tts [en/id] [text] Text To Speech
+      !botjoin [link group] Undang Bot Ke Group Kalian
 </pre>
 
 found bug? or other problem? Pliese submit issues!
