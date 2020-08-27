@@ -1,6 +1,6 @@
 /**
  * https://github.com/ibnusyawall/aex-bot
- * Date: 25/08/20
+ * Date: 28/08/20
  * client.js
 **/
 
@@ -97,6 +97,10 @@ const run = async () => {
 
     client.on('message', async msg => {
         EventHandler(client, msg)
+    })
+
+    client.on('group_join', async notification => {
+        client.sendMessage(notification.id.remote, `Wellcome to Group!\n\nJangan lupa baca deskripsi group terlebih dahulu, dan semoga betah.\n\n-- wellcome-group by: aex-bot`)
     })
 }
 
@@ -245,7 +249,7 @@ const EventHandler = async (client_, msg_) => {
                     }
                     break;
         }
-        console.log(msg_)
+        console.log(msg_, users)
     } catch (err) {
         console.log(err)
     }
