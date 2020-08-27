@@ -9,6 +9,3 @@ package-lock.json
 
 # Optional npm cache directories
 .npm
-
-# Session file
-session.json
