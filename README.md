@@ -1,8 +1,9 @@
 # aex-bot
 
 <div align="center">
-  ## AEX BOT WhatsApp
+# AEX BOT WhatsApp
 </div>
+
 ### Install
 
 ```bash
@@ -14,7 +15,7 @@
 
 ``Note : runing at port 3000``
 
-####Usage
+#### Usage
 <pre>
 After scan barcode whatsapp, you can start message with following command : !menu for showing menu/command
 </pre>
