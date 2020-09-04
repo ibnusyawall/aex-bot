@@ -1,6 +1,6 @@
 /**
  * https://github.com/ibnusyawall/aex-bot
- * Date: 29/08/20
+ * Date: 05/09/20
  * index.js
 **/
 
