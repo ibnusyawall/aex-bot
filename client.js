@@ -259,11 +259,12 @@ const EventHandler = async (client_, msg_) => {
                             var x  = subuh.split(':'); y = terbit.split(':')
                             var xy = x[0] - y[0]; yx = x[1] - y[1]
                             let perbandingan = `${xy < 0 ? Math.abs(xy) : xy}jam ${yx< 0 ? Math.abs(yx) : yx}menit`
-                            let msg = `Jadwal Sholat untuk ${text} dan Sekitarnya ( *${tanggal}* )\n\nDzuhur : ${dzuhur}\nAshar  : ${ashar}\nMaghrib: ${maghrib}\nIsya       : ${isya}\nSubuh   : ${subuh}\n\nDiperkirakan matahari akan terbit pada pukul ${terbit} dengan jeda dari subuh sekitar ${perbandingan}`
+                            let msg = `Jadwal Sholat untuk ${text} dan Sekitarnya ( *${tanggal}* )\n\nDzuhur : ${dzuhur}\nAshar  : ${ashar}\nMaghrib: ${maghrib}\nIsya       : ${isya}\nSubuh   : ${subuh}\n\nDiperkirakan matahari akan terbit pada pukul ${terbit} dengan jeda dari subuh sekitar ${perbandingan}\n\n\nFetch from: https://api.banghasan.com/`
                             msg_.reply(msg)
                         })
                     })
                     .catch(err => msg_.reply(err))
+                    break;
         }
         console.log(msg_, users)
     } catch (err) {
