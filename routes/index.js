@@ -1,6 +1,6 @@
 /**
  * https://github.com/ibnusyawall/aex-bot
- * Date: 25/08/20
+ * Date: 29/08/20
  * index.js
 **/
 
@@ -49,11 +49,9 @@ router.get('/spam-wa', function (req, res, next) {
 })
 
 router.post('/spam-wa', (req, res, next) => {
-    this.code   = req.body.code
-    this.nomor  = req.body.nomor
-    this.jumlah = req.body.jumlah
+    const { code, nomor, jumlah } = req.body
 
-    cwa.spam(this.code, this.nomor, this.jumlah, (error, { errorM, message, code } = {}) => {
+    cwa.spam(code, nomor, jumlah, (error, { errorM, message, code } = {}) => {
         res.render('spam', {
             title: 'SPAM WA | AEX BOT',
             error: errorM,
@@ -70,10 +68,9 @@ router.get('/direct-chat', (req, res, next) => {
 })
 
 router.post('/direct-chat', (req, res, next) => {
-    this.nomor = req.body.nomor
-    this.pesan = req.body.pesan
+    const { nomor, pesan } = req.body
 
-    cwa.cchat(nomor, pesan, (error, { errorM, message }) => {
+    cwa.MessagePrivate(nomor, pesan, (error, { errorM, message }) => {
         res.render('dchat', {
             title: 'DIRECT CHAT WA | AEX BOT',
             error: errorM,
