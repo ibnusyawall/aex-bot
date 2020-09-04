@@ -1,6 +1,6 @@
 /**
  * https://github.com/ibnusyawall/aex-bot
- * Date: 28/08/20
+ * Date: 05/09/20
  * client.js
 **/
 
@@ -23,13 +23,17 @@ const {
     ytDlMP3,
     tts,
     generateQuotesDefault,
-    generateQuotes
+    generateQuotes,
+    jadwalSholat
 } = require('./lib/WALIB')
 
 const SESSION_FILE_PATH = process.cwd() + '/session.json'
-const needle = require('needle')
-const qrcode = require('qrcode-terminal')
+const needle   = require('needle')
+const moment   = require('moment-timezone')
+const qrcode   = require('qrcode-terminal')
 const fs = require('fs')
+
+var tanggal  = moment.tz('Asia/Jakarta').format('DD-MM-YYYY')
 
 let sessionCfg;
 
@@ -248,6 +252,18 @@ const EventHandler = async (client_, msg_) => {
                        msg_.reply('😎👊 ini link ?')
                     }
                     break;
+                case 'js':
+                    jadwalSholat(text)
+                    .then(data => {
+                        data.map(({isya, subuh, dzuhur, ashar, maghrib, terbit}) => {
+                            var x  = subuh.split(':'); y = terbit.split(':')
+                            var xy = x[0] - y[0]; yx = x[1] - y[1]
+                            let perbandingan = `${xy < 0 ? Math.abs(xy) : xy}jam ${yx< 0 ? Math.abs(yx) : yx}menit`
+                            let msg = `Jadwal Sholat untuk ${text} dan Sekitarnya ( *${tanggal}* )\n\nDzuhur : ${dzuhur}\nAshar  : ${ashar}\nMaghrib: ${maghrib}\nIsya       : ${isya}\nSubuh   : ${subuh}\n\nDiperkirakan matahari akan terbit pada pukul ${terbit} dengan jeda dari subuh sekitar ${perbandingan}`
+                            msg_.reply(msg)
+                        })
+                    })
+                    .catch(err => msg_.reply(err))
         }
         console.log(msg_, users)
     } catch (err) {
