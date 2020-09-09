@@ -1,6 +1,6 @@
 /**
  * https://github.com/ibnusyawall/aex-bot
- * Date: 05/09/20
+ * Date: 09/09/20
  * client.js
 **/
 
@@ -19,12 +19,16 @@ const {
     toxic,
     getBase64,
     qrMaker,
-    readQR,
-    ytDlMP3,
+    ytdL,
     tts,
     generateQuotesDefault,
     generateQuotes,
-    jadwalSholat
+    jadwalSholat,
+    igdl,
+    wikipedia,
+    primbon,
+    cekresi,
+    random_anim_hentai
 } = require('./lib/WALIB')
 
 const SESSION_FILE_PATH = process.cwd() + '/session.json'
@@ -158,9 +162,43 @@ const EventHandler = async (client_, msg_) => {
                         if (replace(author) === chat.owner.user) chat.removeParticipants([...mentionedIds])
                     }
                     break;
+                case 'kickme':
+                    if (chat.isGroup) {
+                        if (replace(author) === chat.owner.user) chat.leave()
+                    }
+                case 'kickall':
+                    if (chat.isGroup) {
+                        if (replace(author) === chat.owner.user) {
+                            let text = "";
+                            let mentions = [];
+
+                            for(let participant of chat.participants) {
+                                const contact = await client.getContactById(participant.id._serialized);
+
+                                mentions.push(contact);
+                                text += `@${participant.id.user} `;
+                            }
+                            chat.removeParticipants(mentions)
+                        }
+                    }
                 case 'owner':
                     if (chat.isGroup) {
                         client_.sendMessage(from, `owner this group: ${chat.owner.user}`)
+                    }
+                    break;
+                case 'getall':
+                    if (chat.isGroup) {
+                        let text = "";
+                        let mentions = [];
+
+                        for(let participant of chat.participants) {
+                            const contact = await client.getContactById(participant.id._serialized);
+
+                            mentions.push(contact);
+                            text += `@${participant.id.user} `;
+                        }
+
+                        chat.sendMessage(text, { mentions });
                     }
                     break;
                 case 'menu':
@@ -231,12 +269,29 @@ const EventHandler = async (client_, msg_) => {
                     }
                     break;
                 case 'ytmp3':
-                    let isLink = text.match(/^https:\/\/youtu(?:\.be|be\.com)/g)
+                    let isLink = text.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
 
                     if (isLink !== null) {
-                        ytDlMP3(text).then(data => {
-                            msg_.reply(new MessageMedia('audio/mp3', data, 'aexbot'))
+                        ytdL('mp3', text).then(data => {
+                            const pathmp3 = process.cwd() + '/ytdl_botaex.mp3'
+
+                            msg_.reply(MessageMedia.fromFilePath(pathmp3))
                         })
+                    } else {
+                        msg_.reply('link atau url tidak valid.')
+                    }
+                    break;
+                case 'ytmp4':
+                    let isLinks = text.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+
+                    if (isLinks !== null) {
+                        ytdL('mp4', text).then(data => {
+                            const pathmp4 = process.cwd() + '/ytdl_botaex.mp4'
+
+                            msg_.reply(MessageMedia.fromFilePath(pathmp4))
+                        })
+                    } else {
+                        msg_.reply('link atau url tidak valid.')
                     }
                     break;
                 case 'botjoin':
@@ -264,6 +319,116 @@ const EventHandler = async (client_, msg_) => {
                         })
                     })
                     .catch(err => msg_.reply(err))
+                    break;
+
+                case 'igdl':
+                    igdl(text)
+                        .then(resp => {
+                            const { author, type, like, link, data } = resp
+                            if (type == 'image') {
+                                let msg = `IG IMAGE DOWNLOADER by (aex-bot)\n\n${author} [${like} likes]\n\nLink: ${link}`
+
+                                client_.sendMessage(from, new MessageMedia('image/jpeg', data, 'aex-bot'), {
+                                    caption: msg
+                                })
+                            } else {
+                                let msg = `IG VIDEO DOWNLOADER by (aex-bot)\n\n${author} [${like} likes]\n\nLink: ${link}`
+
+                                client_.sendMessage(from, new MessageMedia('video/mp4', data, 'aex-bot'), {
+                                    caption: msg
+                                })
+                            }
+                        }).catch(err => msg_.reply(err))
+                    break;
+                case 'wiki':
+                    wikipedia(text).then(data => msg_.reply(data.data)).catch(err => msg_.reply(err))
+                    break;
+                case 'sial':
+                    primbon('sial', text).then(resp => {
+                        const { title, data } = resp
+
+                        msg_.reply(`${title}\n\n${data}`)
+                    })
+                    break;
+                case 'jodoh':
+                    primbon('jodoh', text).then(resp => {
+                        const { title, data } = resp
+
+                        msg_.reply(`${title}\n\n${data}`)
+                    })
+                    break;
+                case 'artinama':
+                    primbon('artinama', text).then(resp => {
+                        const { title, data } = resp
+
+                        msg_.reply(`${title}\n\n${data}`)
+                    })
+                    break;
+                case 'sifat':
+                    primbon('sifat', text).then(resp => {
+                        const { title, data } = resp
+
+                        msg_.reply(`${title}\n\n${data}`)
+                    })
+                    break;
+                case 'jnt':
+                    cekresi('jnt', text).then(data => {
+                        msg_.reply(data)
+                    }).catch((err) => {
+                        msg_.reply(err)
+                    })
+                    break;
+                case 'lex':
+                    cekresi('lex', text).then(data => {
+                        msg_.reply(data)
+                    }).catch((err) => {
+                        msg_.reply(err)
+                    })
+                    break;
+                case 'lion':
+                    cekresi('lion', text).then(data => {
+                        msg_.reply(data)
+                    }).catch((err) => {
+                        msg_.reply(err)
+                    })
+                    break;
+                case 'sicepat':
+                    cekresi('sicepat', text).then(data => {
+                        msg_.reply(data)
+                    }).catch((err) => {
+                        msg_.reply(err)
+                    })
+                    break;
+                case 'pos':
+                    cekresi('pos', text).then(data => {
+                        msg_.reply(data)
+                    }).catch((err) => {
+                        msg_.reply(err)
+                    })
+                    break;
+                case 'tiki':
+                    cekresi('tiki', text).then(data => {
+                        msg_.reply(data)
+                    }).catch((err) => {
+                        msg_.reply(err)
+                    })
+                    break;
+                case 'anteraja':
+                    cekresi('anteraja', text).then(data => {
+                        msg_.reply(data)
+                    }).catch((err) => {
+                        msg_.reply(err)
+                    })
+                    break;
+                case 'randomnime':
+                    random_anim_hentai('anim').then(data => {
+                        msg_.reply(new MessageMedia('image/jpeg', data.data, 'aex-bot'))
+                    })
+                    break;
+                case 'randomhentai':
+                    random_anim_hentai('hentai').then(data => {
+                        msg_.reply(new MessageMedia('image/jpeg', data.data, 'aex-bot'))
+                    })
                     break;
         }
         console.log(msg_, users)
