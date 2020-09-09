@@ -1,7 +1,7 @@
 {
   "name": "aex-bot",
-  "version": "0.0.1",
-  "private": false,
+  "version": "1.2.0",
+  "main": "app.js",
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -31,7 +31,24 @@
     "request-promise": "^4.2.5",
     "superagent": "^5.2.2",
     "unirest": "^0.6.0",
-    "whatsapp-web.js": "^1.8.0"
+    "whatsapp-web.js": "^1.8.0",
+    "ytdl-core": "^3.2.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibnusyawall/aex-bot.git"
+  },
+  "keywords": [
+    "aex-bot",
+    "whatsapp-bot",
+    "nodejs",
+    "whatsapp-web.js"
+  ],
+  "author": "ibnusyawall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibnusyawall/aex-bot/issues"
+  },
+  "homepage": "https://github.com/ibnusyawall/aex-bot#readme"
 }
