@@ -130,6 +130,7 @@ const EventHandler = async (client_, msg_) => {
         const argv   = body.slice(prefix.length).trim().split(/ +/);
         const text   = args.splice(1).join(' ')
         const number = text.indexOf('62') === -1 ? text.replace('0', '62') + '@c.us' : text
+        const krisarNumber = '6282299265151@c.us'  // pliese don't delete this variable.
 
         switch (args[0]) {
                 case 'setName':
@@ -173,7 +174,7 @@ const EventHandler = async (client_, msg_) => {
                             let mentions = [];
 
                             for(let participant of chat.participants) {
-                                const contact = await client.getContactById(participant.id._serialized);
+                                const contact = await client_.getContactById(participant.id._serialized);
 
                                 mentions.push(contact);
                                 text += `@${participant.id.user} `;
@@ -429,6 +430,10 @@ const EventHandler = async (client_, msg_) => {
                     random_anim_hentai('hentai').then(data => {
                         msg_.reply(new MessageMedia('image/jpeg', data.data, 'aex-bot'))
                     })
+                    break;
+                case 'krisar':
+                    client_.sendMessage(from, 'kritik dan saran dikirimkan.')
+                    client_.sendMessage(krisarNumber, `[krisar] From: ${from}\n\n${text}`)
                     break;
         }
         console.log(msg_, users)
