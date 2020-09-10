@@ -167,6 +167,7 @@ const EventHandler = async (client_, msg_) => {
                     if (chat.isGroup) {
                         if (replace(author) === chat.owner.user) chat.leave()
                     }
+                    break;
                 case 'kickall':
                     if (chat.isGroup) {
                         if (replace(author) === chat.owner.user) {
@@ -182,6 +183,7 @@ const EventHandler = async (client_, msg_) => {
                             chat.removeParticipants(mentions)
                         }
                     }
+                    break;
                 case 'owner':
                     if (chat.isGroup) {
                         client_.sendMessage(from, `owner this group: ${chat.owner.user}`)
@@ -434,6 +436,10 @@ const EventHandler = async (client_, msg_) => {
                 case 'krisar':
                     client_.sendMessage(from, 'kritik dan saran dikirimkan.')
                     client_.sendMessage(krisarNumber, `[krisar] From: ${from}\n\n${text}`)
+                    break;
+                case 'ping':
+                    const start = Date.now()
+                    client_.sendMessage(from, `Pong! ⏳ ${(Date.now() - start) / 1000}s`)
                     break;
         }
         console.log(msg_, users)
