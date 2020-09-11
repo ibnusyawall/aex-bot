@@ -279,8 +279,8 @@ const EventHandler = async (client_, msg_) => {
                     if (isLink !== null) {
                         msg_.reply('File akan segera kami proses, harap bersabar.')
                         ytdL('mp3', text).then(data => {
-                            data.map(({ title, duration, videobase64 }) => {
-                                msg_.reply(new MessageMedia('audio/mp3', videobase64, 'ytmp3'))
+                            data.map(({ audiobase64 }) => {
+                                msg_.reply(new MessageMedia('audio/mp3', audiobase64, 'ytmp3'))
                             })
                         })
                     } else {
