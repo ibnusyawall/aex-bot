@@ -1,6 +1,6 @@
 /**
  * https://github.com/ibnusyawall/aex-bot
- * Date: 09/09/20
+ * Date: 11/09/20
  * client.js
 **/
 
@@ -116,7 +116,7 @@ const EventHandler = async (client_, msg_) => {
     try {
         const chat  = await msg_.getChat()
         const users = await msg_.getContact()
-        const { type, from, to, author, mentionedIds } = msg_
+        const { type, from, to, author, timestamp, mentionedIds } = msg_
         let { body } = msg_
 
         function replace(text) {
@@ -125,6 +125,8 @@ const EventHandler = async (client_, msg_) => {
 
         const dari = typeof author === 'undefined' ? from : author
         const prefix = '!'
+
+        const istimer = (ts) => moment.duration(moment() - moment(timestamp * 1000)).asSeconds()
 
         const args   = body.slice(prefix.length).trim().split(/ +/);
         const argv   = body.slice(prefix.length).trim().split(/ +/);
@@ -275,10 +277,11 @@ const EventHandler = async (client_, msg_) => {
                     let isLink = text.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
 
                     if (isLink !== null) {
+                        msg_.reply('File akan segera kami proses, harap bersabar.')
                         ytdL('mp3', text).then(data => {
-                            const pathmp3 = process.cwd() + '/ytdl_botaex.mp3'
-
-                            msg_.reply(MessageMedia.fromFilePath(pathmp3))
+                            data.map(({ title, duration, videobase64 }) => {
+                                msg_.reply(new MessageMedia('audio/mp3', videobase64, 'ytmp3'))
+                            })
                         })
                     } else {
                         msg_.reply('link atau url tidak valid.')
@@ -288,10 +291,15 @@ const EventHandler = async (client_, msg_) => {
                     let isLinks = text.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
 
                     if (isLinks !== null) {
+                        msg_.reply('File akan segera kami proses, harap bersabar.')
                         ytdL('mp4', text).then(data => {
-                            const pathmp4 = process.cwd() + '/ytdl_botaex.mp4'
+                            data.map(({ title, duration, videobase64 }) => {
+                              let ytmp4 = `YT MP4 DOWNLOADER\n\n*${title}* [${duration}]\n\nTiming: ${istimer()}`
 
-                            msg_.reply(MessageMedia.fromFilePath(pathmp4))
+                              client_.sendMessage(from, new MessageMedia('video/mp4', videobase64, 'ytmp4'), {
+                                  caption: ytmp4
+                              })
+                            })
                         })
                     } else {
                         msg_.reply('link atau url tidak valid.')
@@ -438,8 +446,7 @@ const EventHandler = async (client_, msg_) => {
                     client_.sendMessage(krisarNumber, `[krisar] From: ${from}\n\n${text}`)
                     break;
                 case 'ping':
-                    const start = Date.now()
-                    client_.sendMessage(from, `Pong! ⏳ ${(Date.now() - start) / 1000}s`)
+                    client_.sendMessage(from, `Pong! ⏳ ${istimer()}s`)
                     break;
         }
         console.log(msg_, users)
