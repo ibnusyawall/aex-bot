@@ -5,7 +5,7 @@
 **/
 
 const express  = require('express');
-const { disk } = require('./../lib/WALIB')
+const { Disk } = require('./../lib/index')
 const { WEB }  = require('./../lib/web')
 const cwa = new WEB()
 

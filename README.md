@@ -13,7 +13,7 @@
 > npm start
 ```
 
-``Note : runing at port 3000``
+``Note : runing at port 5000``
 
 #### Usage
 <pre>
