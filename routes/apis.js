@@ -6,7 +6,7 @@
 
 var express = require('express')
 var ytdl   = require('ytdl-core')
-var { Disk } = require('./../lib/WALIB')
+var { Disk } = require('./../lib/index')
 var { WEB }  = require('./../lib/web')
 var cwa = new WEB()
 
