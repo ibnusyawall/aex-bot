@@ -17,6 +17,7 @@ const {
     Gtts,
     Toxic,
     About,
+    Cuaca,
     Quotes,
     QrMaker,
     Brainly,
@@ -62,7 +63,6 @@ const MessageHandler = async (client_, msg_) => {
         const argv   = body.slice(prefix.length).trim().split(/ +/);
         const text   = args.splice(1).join(' ')
         const number = text.indexOf('62') === -1 ? text.replace('0', '62') + '@c.us' : text
-        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
 
         const krisarNumber = '6282299265151@c.us'  // pliese don't delete this variable.
 
@@ -71,6 +71,7 @@ const MessageHandler = async (client_, msg_) => {
         switch (args[0]) {
                 case 'setName':
                     if (chat.isGroup) {
+                        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
                         if (isadmin) chat.setSubject(text)
                         insert(author, type, text, name, from, 'setName')
                           .then(x => console.log('[:] DB has Insert'))
@@ -79,6 +80,7 @@ const MessageHandler = async (client_, msg_) => {
                     break;
                 case 'setDesc':
                     if (chat.isGroup) {
+                        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
                         if (isadmin) chat.setDescription(text)
                         insert(author, type, text, name, from, 'setDesc')
                           .then(x => console.log('[:] DB has Insert'))
@@ -87,6 +89,7 @@ const MessageHandler = async (client_, msg_) => {
                     break;
                 case 'promote':
                     if (chat.isGroup) {
+                        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
                         if (isadmin) chat.promoteParticipants([mentionedIds[0]])
                         insert(author, type, text, name, from, 'promote')
                           .then(x => console.log('[:] DB has Insert'))
@@ -95,6 +98,7 @@ const MessageHandler = async (client_, msg_) => {
                     break;
                 case 'demote':
                     if (chat.isGroup) {
+                        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
                         if (isadmin) chat.demoteParticipants([mentionedIds[0]])
                         insert(author, type, text, name, from, 'demote')
                           .then(x => console.log('[:] DB has Insert'))
@@ -103,6 +107,7 @@ const MessageHandler = async (client_, msg_) => {
                     break;
                 case 'add':
                     if (chat.isGroup) {
+                        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
                         if (isadmin) chat.addParticipants([text])
                         insert(author, type, text, name, from, 'add')
                           .then(x => console.log('[:] DB has Insert'))
@@ -111,6 +116,7 @@ const MessageHandler = async (client_, msg_) => {
                     break;
                 case 'kick':
                     if (chat.isGroup) {
+                        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
                         if (isadmin) chat.removeParticipants([mentionedIds[0]])
                         insert(author, type, text, name, from, 'kick')
                           .then(x => console.log('[:] DB has Insert'))
@@ -119,6 +125,7 @@ const MessageHandler = async (client_, msg_) => {
                     break;
                 case 'kickme':
                     if (chat.isGroup) {
+                        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
                         if (isadmin) chat.leave()
                         insert(author, type, text, name, from, 'kickme')
                           .then(x => console.log('[:] DB has Insert'))
@@ -127,6 +134,7 @@ const MessageHandler = async (client_, msg_) => {
                     break;
                 case 'kickall':
                     if (chat.isGroup) {
+                        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
                         if (isadmin) {
                             let msg = ''
                             let mentions = []
@@ -159,6 +167,7 @@ const MessageHandler = async (client_, msg_) => {
                     break;
                 case 'getall':
                     if (chat.isGroup) {
+                        const isadmin = chat.participants.filter(no => no.id._serialized === author)[0].isAdmin === true ? true : false
                         if (isadmin) {
                             let msg = `Groups: *${chat.name}* \nMembers: ${chat.participants.length} orang.\n\n`
                             let mentions = []
@@ -586,6 +595,16 @@ const MessageHandler = async (client_, msg_) => {
                     insert(author, type, text, name, from, 'ping')
                         .then(x => console.log('[:] DB has Insert'))
                         .catch(err => console.log(err))
+                    break;
+                case 'cuaca':
+                    Cuaca(text).then(data => {
+                        const { deskripsi, suhu, kelembapan } = data
+                        const msg = `Perkiaraan cuaca: *${text}*\n\nSuhu: *${suhu}*\nKelembapan: *${kelembapan}*\nDeskripsi: *${deskripsi}*`
+
+                        msg_.reply(msg)
+                    }).catch(err => {
+                        msg_.reply(err)
+                    })
                     break;
         }
         console.log(msg_)
