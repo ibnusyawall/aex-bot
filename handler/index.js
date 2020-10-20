@@ -45,7 +45,7 @@ const MessageHandler = async (client = new Client(), message) => {
         let { body } = message
         const { name, formattedTitle } = chat
         let { pushname, verifiedName, formattedName } = sender
-        pushname = pushname || verifiedName || formattedName // verifiedName is the name of someone who uses a business account
+        pushname = pushname || verifiedName || formattedName
         const botNumber = await client.getHostNumber() + '@c.us'
 
         const groupId = isGroupMsg ? chat.groupMetadata.id : ''
