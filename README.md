@@ -1,87 +1,92 @@
 <div align="center">
 
-# AEX BOT WhatsApp
+# AEX-BOT WHATSAPP
+[![CodeFactor](https://www.codefactor.io/repository/github/ibnusyawall/aex-bot/badge/master)](https://www.codefactor.io/repository/github/ibnusyawall/aex-bot/overview/master)
+<details>
+ <summary>Help me!</summary>
 
+ [Saweria](https://saweria.co/donate/ibnusyawall)
+
+ [Paypal.me](https://paypal.me/syawal24)
+
+</details>
 </div>
+
+> Firts go to [api tools](https://api.i-tech.id) to get the key, and then open .env files then paste key obtained previously
+
+### Requirements
+  - Windows: Nodejs, Gitbash, Google Chrome
+  - Linux: Nodejs, NPM, Google Chrome
 
 ### Install
 
-```bash
-> git clone https://github.com/ibnusyawall/aex-bot.git
-> cd aex-bot
-> npm i
-> npm start
+```sh
+$ git clone https://github.com/ibnusyawall/aex-bot.git
+$ cd aex-bot
+$ npm i
+$ npm start
 ```
 
-``Note : runing at port 5000``
+after running it you need to scan the qr.
 
-#### Usage
-<pre>
-After scan barcode whatsapp, you can start message with following command : !menu for showing menu/command
-</pre>
+> Some of the menu that we have provided, among other things:
 
+### Group menu
 
-#### Changelog:
-> ☑️ Fixing Other BUG 
->
-> ☑️ Add Quotes Maker with commmand `!quotesmaker <size> <colorFont> <quotes>`
->
-> ☑️ Delete trash file
-> 
-> ☑️ Add Any Fiture
->
+| Name | Status |
+| ------ | ------ |
+| promote | ok |
+| demote | ok |
+| kick | ok |
+| kickall | ok |
+| getall | ok |
+| kickme | ok |
+| add | ok |
+| del | ok |
+| glink | ok |
 
-#### Menu
-<pre>
-    -- AEX BOT WHATSAPP
+### Education menu
 
-    Group Command:
+| Name | Status |
+| ------ | ------ |
+| translate | ok |
+| brainly | ok |
+| wikipedia | ok |
+| Nulis | ok |
 
-      !setName <optional> Ubah Nama Group
-      !setDesc <optional> Ubah Deskripsi Group
-      !demote <@tagmember> Demote Admin
-      !promote <@tagmember> Promote Member
-      !kick <@tagmember> Kick Member
-      !kickall Kick all members
-      !kickme Kick bot from group
-      !add <number> Invite Member
-      !owner Melihat Siapa Owner Group
-      !getall Tag all members group
+### Downloader menu
 
-    Other Command:
+| Name | Status |
+| ------ | ------ |
+| Youtube Downloader | ok |
+| Instagram Downloader | pending |
+| Pinterest Downloader | ok |
+| Facebook Downloader | ok |
 
-      !quotes Auto Quotes
-      !quotesmaker <size> <colorFont> <quotes> Quotes Maker
-      !toxic Auto Toxic 
+### Other menu
 
-      !igdl <linkIG> IG Auto Downloader
-      !ytmp3 <linkYT> Youtube MP3 Downloader
-      !ytmp4 <linkYT> Youtube MP4 Downloader
-      !qr <optional> QR Code Maker
-      !tts [en/id] <optional> Text To Speech
-      !js <namaKota> Cek Jadwal Sholat
-      !wiki <query> Search on Wikipedia
+| Name | Status |
+| ------ | ------ |
+| Stiker | ok |
+| Primbon menu | ok |
+| Auto Quotes | ok |
+| Quotes maker | ok |
+| Auto Toxic | ok |
+| Random Anime | ok |
+| Random Hentai | pending |
+| Jadwal Sholat | ok |
+| Cek Cuaca | ok |
+| Instagram Stalker | ok |
+| Text to Speech | ok |
+| QR Maker | ok |
 
-      !sial <ttl> Cek hari sial kamu berdasarkan tanggal lahir
-      !jodoh <nama1>&<nama2> Cek apakah dia cocok dengan kamu?
-      !artinama <nama> Cek arti dari nama tersebut
-      !sifat <nama> <ttl> Cek sifat berdasarkan nama dan tanggal lahir
+### Troubleshoot
+Make sure all the necessary dependencies are installed: https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
 
-      !jnt <koderesi/waybill> Melacak kode resi J&T
-      !lex <koderesi/waybill> Melacak kode resi Lex
-      !lion <koderesi/waybill> Melacak kode resi Lion
-      !pos <koderesi/waybill> Melacak kode resi POS
-      !tiki <koderesi/waybill> Melacak kode resi TiKi
-      !sicepat <koderesi/waybill> Melacak kode resi Sicepat
-      !anteraja <koderesi/waybill> Melacak kode resi AnterAja
+Fix Stuck on linux, install google chrome stable: 
+```bash
+> wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+> sudo apt install ./google-chrome-stable_current_amd64.deb
+```
 
-      !randomnime Merandom gambar segar animek
-      !randomhentai Merandom gambar segar hentai
-
-      !botjoin <linkGroup> Undang Bot Ke Group Kalian
-
-</pre>
-
-found bug? or other problem? Pliese submit issues!
-
-Open donation, contact me on WhatsApp: +6282299265151
+any question? contact me at [Whatsapp](https://wa.me/6282299265151) or [Telegram](https://t.me/isywl)

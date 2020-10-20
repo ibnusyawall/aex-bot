@@ -1,17 +1,23 @@
-# Logs
-logs
+# Dempedency directory
+node_modules
 
-# Dependency directories
-node_modules/
+# Dot files
+.idea
+.node-persist
 
-# Optional npm cache directories
-.npm
+# Log files
+debug.log
 
-# lock-files
+# Session files
+*.data.json
+
+# Workspace files
+*.code-workspace
+
+# Lock files
 package-lock.json
 
-# local databases
-.database.db
-
-# sessions file
-session.json
+# Other files
+*.jpg
+*.ogg
+.*.db
